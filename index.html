@@ -103,9 +103,370 @@
       </div>
     </div>
 
-    <!-- Note: Remaining screens (Connections, Wi-Fi, Bluetooth, etc.) are unchanged in structure. Full markup continues as before. -->
-    <!-- For brevity in this update note, the complete markup is preserved from previous version with only style/script extracted. -->
-    <!-- The full file on disk has all screens; this call uses the cleaned version. -->
+    <!-- Connections -->
+    <div id="connections-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Connections</h1>
+      </div>
+      <div class="p-4 space-y-1">
+        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('wifi')">
+          <div class="flex items-center gap-4"><i class="fas fa-wifi text-blue-400 w-6"></i><span>Wi-Fi</span></div>
+          <span class="text-gray-400 text-sm" id="wifi-status">EclipseNet</span>
+        </div>
+        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('bluetooth')">
+          <div class="flex items-center gap-4"><i class="fab fa-bluetooth-b text-blue-400 w-6"></i><span>Bluetooth</span></div>
+          <span class="text-gray-400 text-sm">On</span>
+        </div>
+        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('hotspot')">
+          <div class="flex items-center gap-4"><i class="fas fa-broadcast-tower text-green-400 w-6"></i><span>Hotspot</span></div>
+          <span class="text-gray-400 text-sm">Off</span>
+        </div>
+        <div class="flex items-center justify-between py-4 border-b border-gray-800">
+          <div class="flex items-center gap-4"><i class="fas fa-plane text-gray-400 w-6"></i><span>Airplane Mode</span></div>
+          <label class="toggle-switch"><input type="checkbox" id="airplane"><span class="slider"></span></label>
+        </div>
+        <div class="flex items-center justify-between py-4 cursor-pointer settings-row" onclick="showScreen('vpn')">
+          <div class="flex items-center gap-4"><i class="fas fa-lock text-purple-400 w-6"></i><span>VPN</span></div>
+          <span class="text-gray-400 text-sm">Not connected</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wi-Fi Screen -->
+    <div id="wifi-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Wi-Fi</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3">
+          <span class="text-lg">Wi-Fi</span>
+          <label class="toggle-switch"><input type="checkbox" id="wifi-toggle" checked><span class="slider"></span></label>
+        </div>
+        <div id="wifi-content">
+          <div class="bg-eclipse-card rounded-2xl p-4 mb-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-semibold">EclipseNet</p>
+                <p class="text-sm text-green-400">Connected</p>
+              </div>
+              <i class="fas fa-check text-eclipse-accent"></i>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">Signal strength: Excellent</p>
+          </div>
+          <p class="text-sm text-gray-400 mb-2">Available networks</p>
+          <div class="space-y-1">
+            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
+              <div class="flex items-center gap-3"><i class="fas fa-wifi text-gray-400"></i><span>HomeNetwork</span></div>
+              <i class="fas fa-lock text-gray-500 text-sm"></i>
+            </div>
+            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
+              <div class="flex items-center gap-3"><i class="fas fa-wifi text-gray-400"></i><span>GuestWiFi</span></div>
+              <span class="text-xs text-gray-500">Open</span>
+            </div>
+            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
+              <div class="flex items-center gap-3"><i class="fas fa-wifi text-gray-400"></i><span>OfficeNet</span></div>
+              <i class="fas fa-lock text-gray-500 text-sm"></i>
+            </div>
+          </div>
+          <div class="settings-row py-4 mt-4 cursor-pointer text-center text-eclipse-accent" onclick="alert('Add network: Enter SSID and password')">Add network</div>
+        </div>
+        <div id="wifi-off-message" class="hidden text-center py-12 text-gray-400">
+          <i class="fas fa-wifi text-4xl mb-4 opacity-50"></i>
+          <p>Wi-Fi is off</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bluetooth, Hotspot, VPN, Data, Personalize, Software, Phone, Profile, Apps, Assistant, Security, About screens -->
+    <!-- Full interactive versions restored from previous working build -->
+    <div id="bluetooth-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Bluetooth</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3">
+          <span>Bluetooth</span>
+          <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <p class="text-sm text-gray-400">Paired devices</p>
+        <div class="settings-row py-3">Eclipse Buds</div>
+        <div class="settings-row py-3">Keyboard</div>
+        <div class="settings-row py-3 cursor-pointer text-eclipse-accent">Pair new device</div>
+      </div>
+    </div>
+
+    <div id="hotspot-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Hotspot</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3">
+          <span>Mobile Hotspot</span>
+          <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+        </div>
+        <div class="settings-row py-3">Network name: EclipseHotspot</div>
+        <div class="settings-row py-3">Password: ••••••••</div>
+      </div>
+    </div>
+
+    <div id="vpn-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">VPN</h1>
+      </div>
+      <div class="p-4">
+        <div class="text-center py-8 text-gray-400">
+          <i class="fas fa-lock text-4xl mb-4"></i>
+          <p>No VPN connected</p>
+          <div class="settings-row py-4 mt-6 cursor-pointer text-eclipse-accent" onclick="alert('Add VPN configuration')">Add VPN</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="data-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Data</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3">
+          <span>Mobile Data</span>
+          <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="bg-eclipse-card rounded-2xl p-4">
+          <p class="text-sm text-gray-400">This cycle</p>
+          <p class="text-2xl font-semibold">2.4 GB <span class="text-sm text-gray-400">of 5 GB</span></p>
+          <div class="w-full bg-gray-800 rounded-full h-2 mt-2">
+            <div class="bg-eclipse-accent h-2 rounded-full" style="width: 48%"></div>
+          </div>
+        </div>
+        <div class="settings-row py-3 cursor-pointer" onclick="alert('Set data warning and limit')">Set data limit</div>
+        <div class="settings-row py-3 cursor-pointer" onclick="showScreen('data-usage')">Data usage by app</div>
+      </div>
+    </div>
+
+    <div id="data-usage-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('data')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Data usage</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="flex justify-between py-3 border-b border-gray-800"><span>Browser</span><span>1.1 GB</span></div>
+        <div class="flex justify-between py-3 border-b border-gray-800"><span>Maps</span><span>620 MB</span></div>
+        <div class="flex justify-between py-3 border-b border-gray-800"><span>Music</span><span>410 MB</span></div>
+        <div class="flex justify-between py-3"><span>Other</span><span>270 MB</span></div>
+      </div>
+    </div>
+
+    <div id="personalize-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Personalize</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Choose home screen icon layout: Grid or List')">Icon placement</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Customize handwriting digit style')">Handwriting digits</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Select boot animation')">Boot animation</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="showScreen('themes')">Themes</div>
+        <p class="text-xs text-gray-500 mt-6 text-center">What makes Eclipse special</p>
+      </div>
+    </div>
+
+    <div id="themes-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Themes</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 cursor-pointer">Eclipse Dark (current)</div>
+        <div class="settings-row py-4 cursor-pointer">Midnight Purple</div>
+        <div class="settings-row py-4 cursor-pointer">Arctic Blue</div>
+      </div>
+    </div>
+
+    <div id="software-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Software</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer text-red-400" onclick="alert('Factory reset requires main password, warning, and typed confirmation.')">Factory reset</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Reset settings only (keeps apps and data)')">Reset settings only</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('System is up to date')">System updates</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Backup and restore options')">Backup and restore</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="alert('Developer options unlocked')">Developer options</div>
+      </div>
+    </div>
+
+    <div id="phone-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Phone</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('display')">Display and sound</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Date and time settings')">Date and time</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Language and keyboard')">Language and keyboard</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Shortcuts')">Shortcuts</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('power')">Power</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="alert('Checking for updates...')">Check for updates</div>
+      </div>
+    </div>
+
+    <div id="display-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('phone')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Display and sound</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3"><span>Brightness</span><input type="range" class="w-32"></div>
+        <div class="flex items-center justify-between py-3"><span>Dark mode</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-3"><span>Volume</span><input type="range" class="w-32" value="70"></div>
+        <div class="settings-row py-3 cursor-pointer">Ringtone</div>
+      </div>
+    </div>
+
+    <div id="power-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('phone')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Power</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 cursor-pointer" onclick="alert('Restarting...')">Restart</div>
+        <div class="settings-row py-4 cursor-pointer">Scheduled power off</div>
+        <div class="settings-row py-4 cursor-pointer">Scheduled power on</div>
+        <div class="flex items-center justify-between py-4"><span>Battery saver</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
+      </div>
+    </div>
+
+    <div id="profile-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Profile</h1>
+      </div>
+      <div class="p-6 text-center">
+        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-purple-600 to-indigo-800 flex items-center justify-center text-4xl font-bold mx-auto mb-4 border-2 border-eclipse-accent">E</div>
+        <h2 class="text-2xl font-semibold">Eclipse User</h2>
+      </div>
+      <div class="px-4 space-y-2">
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Eclipse account details')">Eclipse account</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Google account for Play')">Google account for Play</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer">Other accounts</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Password and sign-in options')">Password and sign-in options</div>
+        <div class="settings-row py-4 cursor-pointer text-eclipse-accent" onclick="alert('Change password requires main password or fingerprint first. Password is never shown on screen.')">Change password</div>
+        <p class="text-xs text-gray-500 mt-4 text-center px-4">Password is never shown on screen.</p>
+      </div>
+    </div>
+
+    <div id="apps-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Apps</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-3 flex justify-between cursor-pointer" onclick="alert('App details, permissions, notifications, storage')"><span>Lunar</span><span class="text-gray-400 text-sm">124 MB</span></div>
+        <div class="settings-row py-3 flex justify-between cursor-pointer"><span>Apex</span><span class="text-gray-400 text-sm">89 MB</span></div>
+        <div class="settings-row py-3 flex justify-between cursor-pointer"><span>Orbit Home</span><span class="text-gray-400 text-sm">56 MB</span></div>
+        <div class="settings-row py-3 flex justify-between cursor-pointer"><span>Umbra</span><span class="text-gray-400 text-sm">210 MB</span></div>
+        <div class="settings-row py-3 flex justify-between cursor-pointer"><span>Browser</span><span class="text-gray-400 text-sm">45 MB</span></div>
+        <div class="text-center mt-6 text-xs text-gray-500">Installed list, permissions, per-app notifications, default apps, and storage</div>
+      </div>
+    </div>
+
+    <div id="assistant-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Assistant</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3">
+          <span>Eclipse Assistant (Shady)</span>
+          <label class="toggle-switch"><input type="checkbox" checked id="assistant-toggle"><span class="slider"></span></label>
+        </div>
+        <div id="assistant-options">
+          <div class="settings-row py-3 cursor-pointer" onclick="alert('Choose: Hold power button, voice phrase, or swipe')">How it starts</div>
+          <div class="settings-row py-3 cursor-pointer" onclick="showScreen('assistant-perms')">Access permissions</div>
+          <div class="settings-row py-3 cursor-pointer" onclick="alert('Memory: View and delete what it remembers')">Memory</div>
+          <div class="settings-row py-3 cursor-pointer" onclick="alert('Voice and look, including whether Shady appears')">Voice and look</div>
+          <div class="settings-row py-3 cursor-pointer" onclick="alert('Choose AI model (can be switched later)')">AI model</div>
+        </div>
+        <p class="text-xs text-gray-500 mt-4">Sensitive actions (delete, send, buy) require main password. Name TBD.</p>
+      </div>
+    </div>
+
+    <div id="assistant-perms-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('assistant')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Access permissions</h1>
+      </div>
+      <div class="p-4 space-y-3">
+        <div class="flex items-center justify-between py-2"><span>Screen</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Mic</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Contacts</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Notes</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Lunar</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Apex</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Orbit Home</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="flex items-center justify-between py-2"><span>Umbra</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
+      </div>
+    </div>
+
+    <div id="security-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Security and Privacy</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Lock screen and passwords')">Lock screen and passwords</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Defender status: Active')">Defender</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="showScreen('privacy-dashboard')">Camera, mic, and location dashboard</div>
+      </div>
+    </div>
+
+    <div id="privacy-dashboard-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('security')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Privacy dashboard</h1>
+      </div>
+      <div class="p-4 space-y-3">
+        <div class="flex items-center justify-between py-3"><span>Camera</span><span class="text-green-400 text-sm">Allowed for 2 apps</span></div>
+        <div class="flex items-center justify-between py-3"><span>Microphone</span><span class="text-green-400 text-sm">Allowed for 1 app</span></div>
+        <div class="flex items-center justify-between py-3"><span>Location</span><span class="text-yellow-400 text-sm">While using</span></div>
+      </div>
+    </div>
+
+    <div id="about-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">About</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('device-info')">Device info</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Credits: Built with care for Eclipse')">Credits</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="alert('Open source licenses')">Open source licenses</div>
+        <div class="text-center mt-8">
+          <div class="husky-placeholder">🐺</div>
+          <p class="mt-4 text-sm text-gray-400">Eclipse OS • Built with care</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="device-info-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('about')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Device info</h1>
+      </div>
+      <div class="p-4 space-y-3 text-sm">
+        <div class="flex justify-between py-2"><span class="text-gray-400">Model</span><span>Eclipse ePhone</span></div>
+        <div class="flex justify-between py-2"><span class="text-gray-400">OS</span><span>Eclipse OS</span></div>
+        <div class="flex justify-between py-2"><span class="text-gray-400">Version</span><span>1.0.0</span></div>
+        <div class="flex justify-between py-2"><span class="text-gray-400">Build</span><span>20261026</span></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
