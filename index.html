@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eclipse Settings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            eclipse: {
+              bg: '#0a0a0f',
+              card: '#16161d',
+              accent: '#a855f7',
+              accentDark: '#7c3aed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .settings-row { transition: background 0.2s; }
+    .settings-row:active { background: #222; }
+    .husky-empty { max-width: 200px; margin: 0 auto; }
+  </style>
+</head>
+<body class="bg-eclipse-bg text-white min-h-screen">
+  <div id="app" class="max-w-md mx-auto min-h-screen relative">
+    <!-- Main Settings Screen -->
+    <div id="main-screen" class="pb-8">
+      <!-- Search Bar -->
+      <div class="p-4 sticky top-0 bg-eclipse-bg/95 backdrop-blur z-10">
+        <div class="relative">
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="search" placeholder="Search settings" 
+                 class="w-full bg-eclipse-card rounded-full py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-eclipse-accent">
+        </div>
+      </div>
+
+      <!-- Profile Card -->
+      <div id="profile-card" class="mx-4 mt-2 mb-4 bg-eclipse-card rounded-2xl p-6 flex items-center gap-4 cursor-pointer" onclick="showScreen('profile')">
+        <div class="w-20 h-20 rounded-full bg-eclipse-accent flex items-center justify-center text-3xl font-bold border-2 border-eclipse-accent">E</div>
+        <div>
+          <h2 class="text-2xl font-semibold">Eclipse User</h2>
+          <p class="text-gray-400 text-sm">Tap to manage account</p>
+        </div>
+        <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
+      </div>
+
+      <div class="h-px bg-gray-800 mx-4"></div>
+
+      <!-- Settings Rows -->
+      <div class="mt-2" id="settings-list">
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('connections')">
+          <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400"><i class="fas fa-wifi"></i></div>
+          <span class="flex-1 text-lg">Connections</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('data')">
+          <div class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center text-green-400"><i class="fas fa-signal"></i></div>
+          <span class="flex-1 text-lg">Data</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('personalize')">
+          <div class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400"><i class="fas fa-palette"></i></div>
+          <span class="flex-1 text-lg">Personalize</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('software')">
+          <div class="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400"><i class="fas fa-cog"></i></div>
+          <span class="flex-1 text-lg">Software</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('phone')">
+          <div class="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400"><i class="fas fa-mobile-alt"></i></div>
+          <span class="flex-1 text-lg">Phone</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('profile')">
+          <div class="w-10 h-10 bg-eclipse-accent/20 rounded-xl flex items-center justify-center text-eclipse-accent"><i class="fas fa-user"></i></div>
+          <span class="flex-1 text-lg">Profile</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('apps')">
+          <div class="w-10 h-10 bg-yellow-500/20 rounded-xl flex items-center justify-center text-yellow-400"><i class="fas fa-th"></i></div>
+          <span class="flex-1 text-lg">Apps</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('assistant')">
+          <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400"><i class="fas fa-robot"></i></div>
+          <span class="flex-1 text-lg">Assistant</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('security')">
+          <div class="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center text-red-400"><i class="fas fa-shield-alt"></i></div>
+          <span class="flex-1 text-lg">Security and Privacy</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+        <div class="settings-row flex items-center gap-4 px-4 py-4 cursor-pointer" onclick="showScreen('about')">
+          <div class="w-10 h-10 bg-gray-500/20 rounded-xl flex items-center justify-center text-gray-400"><i class="fas fa-info-circle"></i></div>
+          <span class="flex-1 text-lg">About</span>
+          <i class="fas fa-chevron-right text-gray-500"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Screens (abbreviated for repo; full local version available) -->
+    <div id="connections-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Connections</h1>
+      </div>
+      <div class="p-4 space-y-1">
+        <div class="flex items-center justify-between py-4 border-b border-gray-800"><span>Wi-Fi</span><span class="text-gray-400 text-sm">EclipseNet</span></div>
+        <div class="flex items-center justify-between py-4 border-b border-gray-800"><span>Bluetooth</span><span class="text-gray-400 text-sm">On</span></div>
+        <div class="flex items-center justify-between py-4 border-b border-gray-800"><span>Hotspot</span><span class="text-gray-400 text-sm">Off</span></div>
+        <div class="flex items-center justify-between py-4 border-b border-gray-800"><span>Airplane Mode</span><span class="text-gray-400 text-sm">Off</span></div>
+        <div class="flex items-center justify-between py-4"><span>VPN</span><span class="text-gray-400 text-sm">Not connected</span></div>
+      </div>
+    </div>
+
+    <div id="data-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Data</h1>
+      </div>
+      <div class="p-4"><p>Mobile data, usage, and limits (see full prototype)</p></div>
+    </div>
+
+    <!-- Other screens follow the same pattern. Full interactive version with all sections is in the local prototype. -->
+    <div id="personalize-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>Personalize</h1><p>Icon placement, handwriting digits, boot animation, themes.</p></div></div>
+    <div id="software-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>Software</h1></div></div>
+    <div id="phone-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>Phone</h1></div></div>
+    <div id="profile-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>Profile</h1></div></div>
+    <div id="apps-screen" class="hidden"><div class="p-4 text-center"><button onclick="showScreen('main')">Back</button><h1>Apps</h1><p class="mt-8 text-gray-400">Husky empty state placeholder</p></div></div>
+    <div id="assistant-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>Assistant</h1></div></div>
+    <div id="security-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>Security and Privacy</h1></div></div>
+    <div id="about-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')">Back</button><h1>About</h1><p class="mt-8 text-gray-400">Eclipse OS • Built with care</p></div></div>
+  </div>
+
+  <script>
+    function showScreen(name) {
+      document.querySelectorAll('[id$="-screen"]').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(name + '-screen');
+      if (target) target.classList.remove('hidden');
+      if (name === 'main') document.getElementById('main-screen').classList.remove('hidden');
+    }
+    document.getElementById('search').addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      document.querySelectorAll('#settings-list .settings-row').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+      });
+    });
+    showScreen('main');
+  </script>
+</body>
+</html>
