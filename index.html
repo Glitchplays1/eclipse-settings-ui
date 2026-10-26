@@ -35,6 +35,7 @@
     input:checked + .slider:before { transform: translateX(20px); }
     .husky-placeholder { font-size: 4rem; line-height: 1; }
     .husky-icon { font-size: 1.25rem; line-height: 1; }
+    .network-row:hover { background: #1a1a24; }
   </style>
 </head>
 <body class="bg-eclipse-bg text-white min-h-screen">
@@ -121,7 +122,7 @@
         <h1 class="text-xl font-semibold">Connections</h1>
       </div>
       <div class="p-4 space-y-1">
-        <div class="flex items-center justify-between py-4 border-b border-gray-800">
+        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('wifi')">
           <div class="flex items-center gap-4"><i class="fas fa-wifi text-blue-400 w-6"></i><span>Wi-Fi</span></div>
           <span class="text-gray-400 text-sm" id="wifi-status">EclipseNet</span>
         </div>
@@ -140,6 +141,61 @@
         <div class="flex items-center justify-between py-4">
           <div class="flex items-center gap-4"><i class="fas fa-lock text-purple-400 w-6"></i><span>VPN</span></div>
           <span class="text-gray-400 text-sm">Not connected</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wi-Fi Screen -->
+    <div id="wifi-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Wi-Fi</h1>
+      </div>
+      <div class="p-4 space-y-4">
+        <div class="flex items-center justify-between py-3">
+          <span class="text-lg">Wi-Fi</span>
+          <label class="toggle-switch"><input type="checkbox" id="wifi-toggle" checked><span class="slider"></span></label>
+        </div>
+        <div id="wifi-content">
+          <div class="bg-eclipse-card rounded-2xl p-4 mb-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-semibold">EclipseNet</p>
+                <p class="text-sm text-green-400">Connected</p>
+              </div>
+              <i class="fas fa-check text-eclipse-accent"></i>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">Signal strength: Excellent</p>
+          </div>
+          <p class="text-sm text-gray-400 mb-2">Available networks</p>
+          <div class="space-y-1">
+            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-wifi text-gray-400"></i>
+                <span>HomeNetwork</span>
+              </div>
+              <i class="fas fa-lock text-gray-500 text-sm"></i>
+            </div>
+            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-wifi text-gray-400"></i>
+                <span>GuestWiFi</span>
+              </div>
+              <span class="text-xs text-gray-500">Open</span>
+            </div>
+            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-wifi text-gray-400"></i>
+                <span>OfficeNet</span>
+              </div>
+              <i class="fas fa-lock text-gray-500 text-sm"></i>
+            </div>
+          </div>
+          <div class="settings-row py-4 mt-4 cursor-pointer text-center text-eclipse-accent">Add network</div>
+        </div>
+        <div id="wifi-off-message" class="hidden text-center py-12 text-gray-400">
+          <i class="fas fa-wifi text-4xl mb-4 opacity-50"></i>
+          <p>Wi-Fi is off</p>
         </div>
       </div>
     </div>
@@ -316,13 +372,29 @@
       });
     });
 
-    // Example toggle feedback
+    // Airplane mode
     document.getElementById('airplane')?.addEventListener('change', function() {
       const wifi = document.getElementById('wifi-status');
       if (this.checked) {
         if (wifi) wifi.textContent = 'Off';
       } else {
         if (wifi) wifi.textContent = 'EclipseNet';
+      }
+    });
+
+    // Wi-Fi toggle
+    document.getElementById('wifi-toggle')?.addEventListener('change', function() {
+      const content = document.getElementById('wifi-content');
+      const offMsg = document.getElementById('wifi-off-message');
+      const status = document.getElementById('wifi-status');
+      if (this.checked) {
+        content.classList.remove('hidden');
+        offMsg.classList.add('hidden');
+        if (status) status.textContent = 'EclipseNet';
+      } else {
+        content.classList.add('hidden');
+        offMsg.classList.remove('hidden');
+        if (status) status.textContent = 'Off';
       }
     });
 
