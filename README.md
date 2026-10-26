@@ -7,27 +7,34 @@ Modern, dark-themed Settings screen for Eclipse OS / ePhone, modeled on the fami
 - **Modern UI** — Dark Eclipse theme, rounded cards, purple accents, clean typography, and subtle interactions.
 - **Easy Navigation** — Sticky search, large profile shortcut, back buttons on every sub-screen, and one-tap category rows.
 - **Responsive Design** — Mobile-first layout that works on phones and scales cleanly on larger screens (max-width container).
+- **Fully usable prototype** — All sections are interactive with toggles, status displays, search filtering, and navigation.
 - **Built with** HTML, Tailwind CSS (CDN), and vanilla JavaScript.
 
 ## Sections implemented
 
 - Main screen: search → profile card → divider → ordered list (Connections, Data, Personalize, Software, Phone, Profile, Apps, Assistant, Security and Privacy, About)
-- Connections (status rows)
-- Data (usage + toggles)
-- Personalize (signature Eclipse options near the top)
-- Software, Phone, Profile, Apps, Assistant, Security and Privacy, About
-- Husky illustration on empty states
-- Interactive toggles and basic search filtering
-
-## Notes
-
-- Privileged app considerations, intent handling, and Android system-service integration are architectural (see design brief). This is the visual and interaction prototype.
-- Factory reset, password flows, and assistant body are stubbed with the required warnings and structure.
-- Profile image and husky empty-state art are generated for the prototype.
+- Connections (Wi-Fi, Bluetooth, hotspot, airplane mode toggle, VPN with live status)
+- Data (mobile data toggle, usage bar, limits)
+- Personalize (signature options near the top)
+- Software (factory reset with confirmation note, updates, backup, developer options)
+- Phone (display/sound, date/time, language, shortcuts, power, updates)
+- Profile (accounts, password options — password never shown)
+- Apps (empty state with husky placeholder)
+- Assistant (on/off, start methods, permissions, memory, voice, model)
+- Security and Privacy (lock screen, Defender, dashboard)
+- About (device info, credits, licenses)
 
 ## How to view
 
-Open `index.html` in any modern browser. No build step required.
+1. Open the repository on GitHub.
+2. Click `index.html`.
+3. Click the **Raw** button, or better: enable GitHub Pages (Settings → Pages → Deploy from branch `main` / root) for a live demo at `https://glitchplays1.github.io/eclipse-settings-ui/`.
+
+No build step required. Just open in any modern browser.
+
+## Notes
+
+This is a visual and interaction prototype. Privileged app considerations, intent handling, and Android system-service integration are architectural. Factory reset, password flows, and the assistant body are stubbed with the required warnings and structure.
 
 ## Build order (from design)
 
