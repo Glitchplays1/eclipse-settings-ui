@@ -103,99 +103,70 @@
       </div>
     </div>
 
-    <!-- Connections screens remain as previously expanded -->
-    <div id="connections-screen" class="hidden">
+    <!-- Personalize (expanded) -->
+    <div id="personalize-screen" class="hidden">
       <div class="flex items-center gap-4 p-4 border-b border-gray-800">
         <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Connections</h1>
-      </div>
-      <div class="p-4 space-y-1">
-        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('wifi')">
-          <div class="flex items-center gap-4"><i class="fas fa-wifi text-blue-400 w-6"></i><span>Wi-Fi</span></div>
-          <span class="text-gray-400 text-sm" id="wifi-status">EclipseNet</span>
-        </div>
-        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('bluetooth')">
-          <div class="flex items-center gap-4"><i class="fab fa-bluetooth-b text-blue-400 w-6"></i><span>Bluetooth</span></div>
-          <span class="text-gray-400 text-sm">On</span>
-        </div>
-        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('hotspot')">
-          <div class="flex items-center gap-4"><i class="fas fa-broadcast-tower text-green-400 w-6"></i><span>Hotspot</span></div>
-          <span class="text-gray-400 text-sm">Off</span>
-        </div>
-        <div class="flex items-center justify-between py-4 border-b border-gray-800 cursor-pointer settings-row" onclick="showScreen('airplane')">
-          <div class="flex items-center gap-4"><i class="fas fa-plane text-gray-400 w-6"></i><span>Airplane Mode</span></div>
-          <label class="toggle-switch"><input type="checkbox" id="airplane"><span class="slider"></span></label>
-        </div>
-        <div class="flex items-center justify-between py-4 cursor-pointer settings-row" onclick="showScreen('vpn')">
-          <div class="flex items-center gap-4"><i class="fas fa-lock text-purple-400 w-6"></i><span>VPN</span></div>
-          <span class="text-gray-400 text-sm">Not connected</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Data Screen (expanded) -->
-    <div id="data-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Data</h1>
-      </div>
-      <div class="p-4 space-y-4">
-        <!-- Master Data Toggle -->
-        <div class="flex items-center justify-between py-3">
-          <span>Mobile Data</span>
-          <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
-        </div>
-        <p class="text-xs text-gray-500 -mt-2 mb-2">Turns cellular internet ON or OFF. Does not affect voice calls or SMS.</p>
-
-        <!-- Usage Tracker -->
-        <div class="bg-eclipse-card rounded-2xl p-4">
-          <p class="text-sm text-gray-400">This cycle</p>
-          <p class="text-2xl font-semibold">2.4 GB <span class="text-sm text-gray-400">of 5 GB</span></p>
-          <div class="w-full bg-gray-800 rounded-full h-2 mt-2">
-            <div class="bg-eclipse-accent h-2 rounded-full" style="width: 48%"></div>
-          </div>
-        </div>
-        <div class="settings-row py-3 cursor-pointer" onclick="showScreen('data-usage')">Data usage by app</div>
-
-        <!-- Warnings & Limits -->
-        <div class="settings-row py-3 cursor-pointer" onclick="alert('Set a Data Warning (notification) and Data Limit (hard stop) to match your billing cycle.')">Data warning & limit</div>
-
-        <!-- Data Saver -->
-        <div class="flex items-center justify-between py-3">
-          <span>Data Saver</span>
-          <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
-        </div>
-        <p class="text-xs text-gray-500 -mt-2">Throttles background activity, backups, and HD streaming until on Wi-Fi.</p>
-
-        <!-- Roaming -->
-        <div class="flex items-center justify-between py-3">
-          <span>Data roaming</span>
-          <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
-        </div>
-        <p class="text-xs text-gray-500 -mt-2">Off by default to avoid international fees. Turn on only with a travel plan or eSIM.</p>
-
-        <!-- Network Mode -->
-        <div class="settings-row py-3 cursor-pointer" onclick="alert('5G On / 5G Auto (Smart) / LTE only. Auto saves battery when 5G offers no speed gain.')">Network mode</div>
-      </div>
-    </div>
-
-    <!-- Data Usage sub-screen -->
-    <div id="data-usage-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('data')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Data usage</h1>
+        <h1 class="text-xl font-semibold">Personalize</h1>
       </div>
       <div class="p-4 space-y-2">
-        <div class="flex justify-between py-3 border-b border-gray-800"><span>Browser</span><span>1.1 GB</span></div>
-        <div class="flex justify-between py-3 border-b border-gray-800"><span>Maps</span><span>620 MB</span></div>
-        <div class="flex justify-between py-3 border-b border-gray-800"><span>Music</span><span>410 MB</span></div>
-        <div class="flex justify-between py-3"><span>Other</span><span>270 MB</span></div>
-        <p class="text-xs text-gray-500 mt-4">Sync the cycle start date with your carrier billing period.</p>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('wallpaper')">Wallpaper</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('themes')">Themes & colors</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('lockscreen')">Lock screen</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Choose home screen icon layout: Grid or List')">Icon placement</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Customize handwriting digit style')">Handwriting digits</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="alert('Select boot animation')">Boot animation</div>
+        <p class="text-xs text-gray-500 mt-6 text-center">What makes Eclipse special</p>
       </div>
     </div>
 
-    <!-- Remaining screens as navigable placeholders -->
-    <div id="personalize-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Personalize</h1></div></div>
+    <!-- Wallpaper -->
+    <div id="wallpaper-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Wallpaper</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 cursor-pointer">Picture</div>
+        <div class="settings-row py-4 cursor-pointer">Solid color</div>
+        <div class="settings-row py-4 cursor-pointer">Slideshow</div>
+        <div class="settings-row py-4 cursor-pointer">Eclipse Spotlight</div>
+        <p class="text-xs text-gray-500 mt-4">Fit options: fill, fit, stretch, tile, center.</p>
+      </div>
+    </div>
+
+    <!-- Themes & Colors -->
+    <div id="themes-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Themes & colors</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 cursor-pointer">Eclipse Dark (current)</div>
+        <div class="settings-row py-4 cursor-pointer">Midnight Purple</div>
+        <div class="settings-row py-4 cursor-pointer">Arctic Blue</div>
+        <div class="flex items-center justify-between py-4"><span>Transparency effects</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="settings-row py-4 cursor-pointer">Accent color (auto from wallpaper or manual)</div>
+        <p class="text-xs text-gray-500 mt-2">Themes bundle wallpaper, colors, sounds, and cursors.</p>
+      </div>
+    </div>
+
+    <!-- Lock Screen -->
+    <div id="lockscreen-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Lock screen</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="settings-row py-4 cursor-pointer">Background: Spotlight / Picture / Slideshow</div>
+        <div class="settings-row py-4 cursor-pointer">Status icons (Weather, Calendar)</div>
+        <div class="flex items-center justify-between py-4"><span>Show wallpaper on sign-in</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+      </div>
+    </div>
+
+    <!-- Minimal placeholders so other navigation still works -->
+    <div id="connections-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Connections</h1></div></div>
+    <div id="data-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Data</h1></div></div>
     <div id="software-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Software</h1></div></div>
     <div id="phone-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Phone</h1></div></div>
     <div id="profile-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Profile</h1></div></div>
@@ -224,13 +195,6 @@
         <div class="flex justify-between py-2"><span class="text-gray-400">Build</span><span>20261027</span></div>
       </div>
     </div>
-
-    <!-- Minimal placeholders for other Connections sub-screens so navigation works -->
-    <div id="wifi-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Wi-Fi</h1></div></div>
-    <div id="bluetooth-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Bluetooth</h1></div></div>
-    <div id="hotspot-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Hotspot</h1></div></div>
-    <div id="airplane-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Airplane Mode</h1></div></div>
-    <div id="vpn-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">VPN</h1></div></div>
   </div>
 </body>
 </html>
