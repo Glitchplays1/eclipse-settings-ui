@@ -103,71 +103,31 @@
       </div>
     </div>
 
-    <!-- Personalize (expanded) -->
-    <div id="personalize-screen" class="hidden">
+    <!-- Software (expanded) -->
+    <div id="software-screen" class="hidden">
       <div class="flex items-center gap-4 p-4 border-b border-gray-800">
         <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Personalize</h1>
+        <h1 class="text-xl font-semibold">Software</h1>
       </div>
       <div class="p-4 space-y-2">
-        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('wallpaper')">Wallpaper</div>
-        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('themes')">Themes & colors</div>
-        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="showScreen('lockscreen')">Lock screen</div>
-        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Choose home screen icon layout: Grid or List')">Icon placement</div>
-        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Customize handwriting digit style')">Handwriting digits</div>
-        <div class="settings-row py-4 cursor-pointer" onclick="alert('Select boot animation')">Boot animation</div>
-        <p class="text-xs text-gray-500 mt-6 text-center">What makes Eclipse special</p>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer text-red-400" onclick="alert('Factory reset requires main password, warning, and typed confirmation.')">Factory reset</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Reset settings only (keeps apps and data)')">Reset settings only</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('System is up to date')">System updates</div>
+        <div class="settings-row py-4 border-b border-gray-800 cursor-pointer" onclick="alert('Backup and restore options')">Backup and restore</div>
+        <div class="settings-row py-4 cursor-pointer" onclick="alert('Developer options unlocked')">Developer options</div>
+
+        <div class="bg-eclipse-card rounded-2xl p-4 mt-6 text-sm text-gray-300 space-y-2">
+          <p><strong>How settings work:</strong></p>
+          <p>Changes are written to config files or a system store (not the program itself). On startup the system reads them and applies conditional logic (e.g. dark mode loads the dark theme).</p>
+          <p class="text-xs text-gray-500">Some changes take effect immediately; others need a restart.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Wallpaper -->
-    <div id="wallpaper-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Wallpaper</h1>
-      </div>
-      <div class="p-4 space-y-2">
-        <div class="settings-row py-4 cursor-pointer">Picture</div>
-        <div class="settings-row py-4 cursor-pointer">Solid color</div>
-        <div class="settings-row py-4 cursor-pointer">Slideshow</div>
-        <div class="settings-row py-4 cursor-pointer">Eclipse Spotlight</div>
-        <p class="text-xs text-gray-500 mt-4">Fit options: fill, fit, stretch, tile, center.</p>
-      </div>
-    </div>
-
-    <!-- Themes & Colors -->
-    <div id="themes-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Themes & colors</h1>
-      </div>
-      <div class="p-4 space-y-2">
-        <div class="settings-row py-4 cursor-pointer">Eclipse Dark (current)</div>
-        <div class="settings-row py-4 cursor-pointer">Midnight Purple</div>
-        <div class="settings-row py-4 cursor-pointer">Arctic Blue</div>
-        <div class="flex items-center justify-between py-4"><span>Transparency effects</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-        <div class="settings-row py-4 cursor-pointer">Accent color (auto from wallpaper or manual)</div>
-        <p class="text-xs text-gray-500 mt-2">Themes bundle wallpaper, colors, sounds, and cursors.</p>
-      </div>
-    </div>
-
-    <!-- Lock Screen -->
-    <div id="lockscreen-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('personalize')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Lock screen</h1>
-      </div>
-      <div class="p-4 space-y-2">
-        <div class="settings-row py-4 cursor-pointer">Background: Spotlight / Picture / Slideshow</div>
-        <div class="settings-row py-4 cursor-pointer">Status icons (Weather, Calendar)</div>
-        <div class="flex items-center justify-between py-4"><span>Show wallpaper on sign-in</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-      </div>
-    </div>
-
-    <!-- Minimal placeholders so other navigation still works -->
+    <!-- Other screens as placeholders so navigation works -->
     <div id="connections-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Connections</h1></div></div>
     <div id="data-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Data</h1></div></div>
-    <div id="software-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Software</h1></div></div>
+    <div id="personalize-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Personalize</h1></div></div>
     <div id="phone-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Phone</h1></div></div>
     <div id="profile-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Profile</h1></div></div>
     <div id="apps-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Apps</h1></div></div>
