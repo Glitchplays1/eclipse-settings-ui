@@ -103,7 +103,7 @@
       </div>
     </div>
 
-    <!-- Connections -->
+    <!-- Connections screens remain as previously expanded -->
     <div id="connections-screen" class="hidden">
       <div class="flex items-center gap-4 p-4 border-b border-gray-800">
         <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
@@ -133,150 +133,68 @@
       </div>
     </div>
 
-    <!-- Airplane Mode -->
-    <div id="airplane-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Airplane Mode</h1>
-      </div>
-      <div class="p-4 space-y-4">
-        <div class="flex items-center justify-between py-3">
-          <span>Airplane Mode</span>
-          <label class="toggle-switch"><input type="checkbox" id="airplane-detail"><span class="slider"></span></label>
-        </div>
-        <div class="bg-eclipse-card rounded-2xl p-4 text-sm text-gray-300 space-y-3">
-          <p><strong>How it works:</strong> Turning this on flips a master kill-switch that instantly shuts down all wireless transmitters (Cellular, Wi-Fi, Bluetooth, and GPS).</p>
-          <p><strong>When to use it:</strong> To comply with airline regulations, save battery when you have no signal, or force a full network refresh.</p>
-          <p class="text-eclipse-accent"><strong>Pro Tip:</strong> You can manually turn Wi-Fi and Bluetooth back on while Airplane Mode is active.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Wi-Fi Screen -->
-    <div id="wifi-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Wi-Fi</h1>
-      </div>
-      <div class="p-4 space-y-4">
-        <div class="flex items-center justify-between py-3">
-          <span class="text-lg">Wi-Fi</span>
-          <label class="toggle-switch"><input type="checkbox" id="wifi-toggle" checked><span class="slider"></span></label>
-        </div>
-        <div id="wifi-content">
-          <div class="bg-eclipse-card rounded-2xl p-4 mb-4">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="font-semibold">EclipseNet</p>
-                <p class="text-sm text-green-400">Connected</p>
-              </div>
-              <i class="fas fa-check text-eclipse-accent"></i>
-            </div>
-            <p class="text-xs text-gray-400 mt-2">Signal strength: Excellent</p>
-          </div>
-          <p class="text-sm text-gray-400 mb-2">Available networks</p>
-          <div class="space-y-1">
-            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
-              <div class="flex items-center gap-3"><i class="fas fa-wifi text-gray-400"></i><span>HomeNetwork</span></div>
-              <i class="fas fa-lock text-gray-500 text-sm"></i>
-            </div>
-            <div class="network-row flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer">
-              <div class="flex items-center gap-3"><i class="fas fa-wifi text-gray-400"></i><span>GuestWiFi</span></div>
-              <span class="text-xs text-gray-500">Open</span>
-            </div>
-          </div>
-          <div class="mt-6 space-y-3 text-sm">
-            <div class="settings-row py-3 cursor-pointer" onclick="alert('Saved Networks / Auto-Connect: Remembers routers so you connect automatically.')">Saved networks</div>
-            <div class="flex items-center justify-between py-3"><span>Metered Wi-Fi</span><label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label></div>
-            <div class="flex items-center justify-between py-3"><span>MAC randomization</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-            <p class="text-xs text-gray-500">Metered treats the network like limited data. MAC randomization hides your permanent hardware ID.</p>
-          </div>
-        </div>
-        <div id="wifi-off-message" class="hidden text-center py-12 text-gray-400">
-          <i class="fas fa-wifi text-4xl mb-4 opacity-50"></i>
-          <p>Wi-Fi is off</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bluetooth -->
-    <div id="bluetooth-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Bluetooth</h1>
-      </div>
-      <div class="p-4 space-y-4">
-        <div class="flex items-center justify-between py-3">
-          <span>Bluetooth</span>
-          <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
-        </div>
-        <p class="text-sm text-gray-400">Paired devices</p>
-        <div class="settings-row py-3">Eclipse Buds</div>
-        <div class="settings-row py-3">Keyboard</div>
-        <div class="settings-row py-3 cursor-pointer text-eclipse-accent">Pair new device</div>
-        <div class="bg-eclipse-card rounded-2xl p-4 mt-4 text-sm text-gray-300">
-          <p>Uses short-range radio to pair with headphones, watches, cars, and more.</p>
-          <p class="mt-2">Visibility / Pairing Mode broadcasts your name. Advanced codec settings control audio quality.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hotspot -->
-    <div id="hotspot-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">Hotspot</h1>
-      </div>
-      <div class="p-4 space-y-4">
-        <div class="flex items-center justify-between py-3">
-          <span>Mobile Hotspot</span>
-          <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
-        </div>
-        <div class="settings-row py-3">Network name: EclipseHotspot</div>
-        <div class="settings-row py-3">Password: ••••••••</div>
-        <div class="bg-eclipse-card rounded-2xl p-4 text-sm text-gray-300">
-          <p>Turns your phone into a mini router using cellular data.</p>
-          <p class="mt-2">Share via Wi-Fi, USB (fastest + charges), or Bluetooth (lowest battery).</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- VPN -->
-    <div id="vpn-screen" class="hidden">
-      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
-        <button onclick="showScreen('connections')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
-        <h1 class="text-xl font-semibold">VPN</h1>
-      </div>
-      <div class="p-4 space-y-4">
-        <div class="text-center py-6 text-gray-400">
-          <i class="fas fa-lock text-4xl mb-4"></i>
-          <p>No VPN connected</p>
-        </div>
-        <div class="settings-row py-4 cursor-pointer text-eclipse-accent text-center" onclick="alert('Add VPN configuration')">Add VPN</div>
-        <div class="bg-eclipse-card rounded-2xl p-4 text-sm text-gray-300">
-          <p><strong>VPN:</strong> Creates an encrypted tunnel for all traffic, routing it through an external server to hide your location and IP.</p>
-          <p class="mt-2"><strong>Private DNS:</strong> Encrypts website lookup requests so your provider cannot easily see the sites you visit.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Other screens (Data, Personalize, etc.) remain available via navigation -->
+    <!-- Data Screen (expanded) -->
     <div id="data-screen" class="hidden">
       <div class="flex items-center gap-4 p-4 border-b border-gray-800">
         <button onclick="showScreen('main')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
         <h1 class="text-xl font-semibold">Data</h1>
       </div>
-      <div class="p-4">
-        <div class="flex items-center justify-between py-3"><span>Mobile Data</span><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></div>
-        <div class="bg-eclipse-card rounded-2xl p-4 mt-4">
+      <div class="p-4 space-y-4">
+        <!-- Master Data Toggle -->
+        <div class="flex items-center justify-between py-3">
+          <span>Mobile Data</span>
+          <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <p class="text-xs text-gray-500 -mt-2 mb-2">Turns cellular internet ON or OFF. Does not affect voice calls or SMS.</p>
+
+        <!-- Usage Tracker -->
+        <div class="bg-eclipse-card rounded-2xl p-4">
           <p class="text-sm text-gray-400">This cycle</p>
           <p class="text-2xl font-semibold">2.4 GB <span class="text-sm text-gray-400">of 5 GB</span></p>
+          <div class="w-full bg-gray-800 rounded-full h-2 mt-2">
+            <div class="bg-eclipse-accent h-2 rounded-full" style="width: 48%"></div>
+          </div>
         </div>
-        <p class="text-sm text-gray-400 mt-4">Links to carrier towers (4G LTE / 5G). Data roaming, network mode, and APN settings live here.</p>
+        <div class="settings-row py-3 cursor-pointer" onclick="showScreen('data-usage')">Data usage by app</div>
+
+        <!-- Warnings & Limits -->
+        <div class="settings-row py-3 cursor-pointer" onclick="alert('Set a Data Warning (notification) and Data Limit (hard stop) to match your billing cycle.')">Data warning & limit</div>
+
+        <!-- Data Saver -->
+        <div class="flex items-center justify-between py-3">
+          <span>Data Saver</span>
+          <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+        </div>
+        <p class="text-xs text-gray-500 -mt-2">Throttles background activity, backups, and HD streaming until on Wi-Fi.</p>
+
+        <!-- Roaming -->
+        <div class="flex items-center justify-between py-3">
+          <span>Data roaming</span>
+          <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+        </div>
+        <p class="text-xs text-gray-500 -mt-2">Off by default to avoid international fees. Turn on only with a travel plan or eSIM.</p>
+
+        <!-- Network Mode -->
+        <div class="settings-row py-3 cursor-pointer" onclick="alert('5G On / 5G Auto (Smart) / LTE only. Auto saves battery when 5G offers no speed gain.')">Network mode</div>
       </div>
     </div>
 
-    <!-- Placeholder screens for remaining sections so navigation does not break -->
+    <!-- Data Usage sub-screen -->
+    <div id="data-usage-screen" class="hidden">
+      <div class="flex items-center gap-4 p-4 border-b border-gray-800">
+        <button onclick="showScreen('data')" class="text-eclipse-accent text-xl"><i class="fas fa-chevron-left"></i></button>
+        <h1 class="text-xl font-semibold">Data usage</h1>
+      </div>
+      <div class="p-4 space-y-2">
+        <div class="flex justify-between py-3 border-b border-gray-800"><span>Browser</span><span>1.1 GB</span></div>
+        <div class="flex justify-between py-3 border-b border-gray-800"><span>Maps</span><span>620 MB</span></div>
+        <div class="flex justify-between py-3 border-b border-gray-800"><span>Music</span><span>410 MB</span></div>
+        <div class="flex justify-between py-3"><span>Other</span><span>270 MB</span></div>
+        <p class="text-xs text-gray-500 mt-4">Sync the cycle start date with your carrier billing period.</p>
+      </div>
+    </div>
+
+    <!-- Remaining screens as navigable placeholders -->
     <div id="personalize-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Personalize</h1></div></div>
     <div id="software-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Software</h1></div></div>
     <div id="phone-screen" class="hidden"><div class="p-4"><button onclick="showScreen('main')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Phone</h1></div></div>
@@ -306,6 +224,13 @@
         <div class="flex justify-between py-2"><span class="text-gray-400">Build</span><span>20261027</span></div>
       </div>
     </div>
+
+    <!-- Minimal placeholders for other Connections sub-screens so navigation works -->
+    <div id="wifi-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Wi-Fi</h1></div></div>
+    <div id="bluetooth-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Bluetooth</h1></div></div>
+    <div id="hotspot-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Hotspot</h1></div></div>
+    <div id="airplane-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">Airplane Mode</h1></div></div>
+    <div id="vpn-screen" class="hidden"><div class="p-4"><button onclick="showScreen('connections')" class="text-eclipse-accent">Back</button><h1 class="text-xl mt-4">VPN</h1></div></div>
   </div>
 </body>
 </html>
